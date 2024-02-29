@@ -1,0 +1,54 @@
+.header {
+  color: white;
+  width: 100%;
+  padding: 20px 0;
+  transition: 0.3s linear;
+  height: 0;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 120px;
+  }
+
+  &__inputs {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__input {
+    padding: 5px 15px;
+    background-color: white;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: black;
+  }
+
+  &__active {
+    position: fixed;
+    width: 100%;
+    padding: 20px 0;
+    top: 0;
+    left: 0;
+    background-color: var(--gray-bg);
+    z-index: 5;
+    transition: 0.1s linear;
+    overflow: hidden;
+    height: fit-content;
+  }
+
+  &:not(&__active) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+
+  &:not(&__active) {
+    .header__inputs {
+      display: none;
+    }
+  }
+}

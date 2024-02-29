@@ -1,0 +1,26 @@
+.footer {
+  padding: 40px 0;
+  background-color: var(--gray-bg);
+  color: var(--white);
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__soc-items {
+    display: flex;
+    gap: 40px;
+
+    a img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
