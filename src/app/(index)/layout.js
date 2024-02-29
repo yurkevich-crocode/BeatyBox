@@ -1,11 +1,4 @@
 import "@/globals.scss";
-import { IBM_Plex_Sans } from "next/font/google";
-
-const font = IBM_Plex_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
 
 export const metadata = {
   title: "BeautyBox",
@@ -14,7 +7,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={font.className}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

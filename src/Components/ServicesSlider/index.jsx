@@ -23,39 +23,22 @@ const swiperSettings = {
   },
 };
 
-const ServicesSlider = () => {
+const ServicesSlider = ({ items }) => {
   return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      className={styles["swiper-services"]}
-      {...swiperSettings}
-    >
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ServicesItem />
-      </SwiperSlide>
-    </Swiper>
+    items && (
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={3}
+        className={styles["swiper-services"]}
+        {...swiperSettings}
+      >
+        {items.map((el) => (
+          <SwiperSlide key={el.id}>
+            <ServicesItem name={el.nameService} image={el.image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    )
   );
 };
 

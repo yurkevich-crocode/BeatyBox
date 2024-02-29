@@ -10,6 +10,7 @@
     height: 120px;
     overflow: hidden;
     position: relative;
+    top: 80px;
     z-index: 2;
     border-radius: 100%;
 
@@ -23,8 +24,8 @@
   }
 
   &__content-wrapper {
-    transform: translateY(-80px);
     width: 100%;
+    max-height: 187px;
     border-radius: 10px;
     padding: 100px 20px 60px 20px;
     text-align: center;
