@@ -3,15 +3,18 @@
 import Container from "@/Components/Container";
 import styles from "./Header.module.scss";
 import Logo from "@/Components/Logo";
+
 import { useEffect, useState } from "react";
 
-const Header = () => {
+const Header = ({ land }) => {
   const [headerScrolledPast, setHeaderScrolledPast] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      let num;
+      land ? (num = 2) : (num = 1);
       const sectionTop = document
-        .querySelector("section:nth-child(2)")
+        .querySelector(`section:nth-child(${num})`)
         .getBoundingClientRect().top;
 
       if (sectionTop < 40) {

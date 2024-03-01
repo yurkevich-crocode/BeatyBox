@@ -1,0 +1,87 @@
+.company-item {
+  display: flex;
+  gap: 40px;
+
+  &__img-wrapper {
+    width: 440px;
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  &__img-wrapper img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__info-wrapper {
+    flex-grow: 1;
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+  }
+
+  &__tags-list {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+    padding-bottom: 10px;
+  }
+
+  &__tag-skeleton {
+    background-color: rgba(0, 0, 0, 0.331);
+    border-radius: 10px;
+    animation: pulse 0.5s infinite alternate;
+  }
+
+  &__img-skeleton {
+    width: 440px;
+    background-color: rgba(0, 0, 0, 0.331);
+    height: 320px;
+    border-radius: 10px;
+    animation: pulse 0.5s infinite alternate;
+  }
+
+  &__name-skeleton {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.331);
+    animation: pulse 0.5s infinite alternate;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.331);
+  }
+
+  &__address-skeleton {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.331);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.331);
+    animation: pulse 0.5s infinite alternate;
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

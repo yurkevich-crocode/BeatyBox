@@ -1,0 +1,8 @@
+.breadcrumps {
+  display: flex;
+  align-items: center;
+
+  & element:not(&:last-child) {
+    color: red;
+  }
+}
