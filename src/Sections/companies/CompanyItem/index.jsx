@@ -30,7 +30,6 @@ const CompanyItem = ({ data, skeleton }) => {
       </div>
     </div>
   ) : (
-    // Код для отображения контента, когда данные загружены
     <div className={styles["company-item"]}>
       <div className={styles["company-item__img-wrapper"]}>
         <img src={data.profileImg} alt="" />
@@ -43,11 +42,13 @@ const CompanyItem = ({ data, skeleton }) => {
           </p>
         </div>
         <div className={styles["company-item__tags-list"]}>
-          {data.tags.slice(0, 3).map((el, idx) => (
+          {data.tags?.slice(0, 3).map((el, idx) => (
             <div className={styles["company-item__tag"]} key={idx}>
-              <p className={styles["company-item__tag-text"]}>{el}</p>
+              <p className={styles["company-item__tag-text"]}>
+                {el?.serviceName}
+              </p>
               <span className={styles["company-item__price"]}>
-                {(idx + 1) * 20}$
+                {el?.price} ₽
               </span>
             </div>
           ))}

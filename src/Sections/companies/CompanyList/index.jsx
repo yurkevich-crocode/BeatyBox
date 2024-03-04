@@ -23,6 +23,7 @@ export const commonSearch = async () => {
 const CompanyList = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     commonSearch().then(({ data }) => {
       if (data) {
