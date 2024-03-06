@@ -32,17 +32,17 @@ const CompanyItem = ({ data, skeleton }) => {
   ) : (
     <div className={styles["company-item"]}>
       <div className={styles["company-item__img-wrapper"]}>
-        <img src={data.profileImg} alt="" />
+        <img src={data?.profileImg} alt="" />
       </div>
       <div className={styles["company-item__info-wrapper"]}>
         <div className={styles["company-item__main-info"]}>
-          <p className={styles["company-item__name"]}>{data.companyName}</p>
+          <p className={styles["company-item__name"]}>{data?.companyName}</p>
           <p className={styles["company-item__address"]}>
-            {data.city}, {data.street}
+            {data?.city}, {data?.street}
           </p>
         </div>
         <div className={styles["company-item__tags-list"]}>
-          {data.tags?.slice(0, 3).map((el, idx) => (
+          {data?.tags?.slice(0, 3).map((el, idx) => (
             <div className={styles["company-item__tag"]} key={idx}>
               <p className={styles["company-item__tag-text"]}>
                 {el?.serviceName}

@@ -1,10 +1,16 @@
+"use client";
+
 import Container from "@/Components/Container";
 
 import styles from "./Hero.module.scss";
 import Title from "@/Components/Title";
 import Subtitle from "@/Components/Subtitle";
+import { useState } from "react";
+import Link from "next/link";
 
 const Hero = () => {
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <section className={styles["hero"]}>
       <div className={styles["hero__img-wrapper"]}>
@@ -27,7 +33,11 @@ const Hero = () => {
                 type="text"
                 placeholder="Поиск услуг или заведений"
                 className={styles["hero__search-input"]}
+                onInput={(e) => setSearchValue(e.target.value)}
               />
+              <Link href={`/${searchValue}`}>
+                <button>search</button>
+              </Link>
             </div>
           </div>
         </Container>

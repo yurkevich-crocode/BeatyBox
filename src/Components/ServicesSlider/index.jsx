@@ -5,6 +5,7 @@ import styles from "./ServicesSlider.module.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import ServicesItem from "../ServicesItem";
+import { useState, useEffect } from "react";
 
 const swiperSettings = {
   breakpoints: {
@@ -24,21 +25,51 @@ const swiperSettings = {
 };
 
 const ServicesSlider = ({ items }) => {
+  const [initialized, setInitialized] = useState(false);
+
+  useEffect(() => {
+    if (items && items.length > 0 && !initialized) {
+      setInitialized(true);
+    }
+  }, [items, initialized]);
+
   return (
-    items && (
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={3}
-        className={styles["swiper-services"]}
-        {...swiperSettings}
-      >
-        {items.map((el) => (
+    <Swiper
+      spaceBetween={50}
+      slidesPerView={3}
+      className={styles["swiper-services"]}
+      {...swiperSettings}
+    >
+      {initialized ? (
+        items.map((el) => (
           <SwiperSlide key={el.id}>
-            <ServicesItem name={el.nameService} image={el.image} />
+            <ServicesItem
+              name={el.nameService}
+              image={el.image}
+              loading={false}
+            />
           </SwiperSlide>
-        ))}
-      </Swiper>
-    )
+        ))
+      ) : (
+        <>
+          <SwiperSlide key={1}>
+            <ServicesItem loading={true} />
+          </SwiperSlide>
+          <SwiperSlide key={2}>
+            <ServicesItem loading={true} />
+          </SwiperSlide>
+          <SwiperSlide key={3}>
+            <ServicesItem loading={true} />
+          </SwiperSlide>
+          <SwiperSlide key={4}>
+            <ServicesItem loading={true} />
+          </SwiperSlide>
+          <SwiperSlide key={5}>
+            <ServicesItem loading={true} />
+          </SwiperSlide>
+        </>
+      )}
+    </Swiper>
   );
 };
 
