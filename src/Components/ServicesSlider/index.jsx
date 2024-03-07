@@ -1,11 +1,13 @@
 "use client";
 
 import "swiper/css";
+import "swiper/css/navigation";
 import styles from "./ServicesSlider.module.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import ServicesItem from "../ServicesItem";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const swiperSettings = {
   breakpoints: {
@@ -22,9 +24,14 @@ const swiperSettings = {
       spaceBetween: 50,
     },
   },
+  navigation: {
+    nextEl: "swiper-services__swiperNext",
+    prevEl: "swiper-services__swiperBack",
+  },
 };
 
 const ServicesSlider = ({ items }) => {
+  const [slider, setSlider] = useState();
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
@@ -33,12 +40,27 @@ const ServicesSlider = ({ items }) => {
     }
   }, [items, initialized]);
 
+  const handleInit = (e) => {
+    setSlider(e);
+  };
+
+  const nextSlide = () => {
+    slider.slideNext();
+  };
+
+  const prevSlide = () => {
+    slider.slidePrev();
+  };
+
   return (
     <Swiper
+      modules={[Navigation]}
       spaceBetween={50}
+      navigation
       slidesPerView={3}
       className={styles["swiper-services"]}
       {...swiperSettings}
+      onSwiper={handleInit}
     >
       {initialized ? (
         items.map((el) => (
@@ -69,6 +91,17 @@ const ServicesSlider = ({ items }) => {
           </SwiperSlide>
         </>
       )}
+
+      <div className={styles["swiper-services__controls"]}>
+        <div
+          className={styles["swiper-services__swiperBack"]}
+          onClick={prevSlide}
+        />
+        <div
+          className={styles["swiper-services__swiperNext"]}
+          onClick={nextSlide}
+        />
+      </div>
     </Swiper>
   );
 };

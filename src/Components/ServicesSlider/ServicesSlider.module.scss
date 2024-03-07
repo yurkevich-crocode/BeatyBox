@@ -1,3 +1,36 @@
 .swiper-services {
   overflow: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__swiperNext,
+  &__swiperBack {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: white;
+    border: 2px solid var(--skeleton);
+    cursor: grab;
+  }
+
+  &__swiperNext {
+    // width: 100px;
+    // height: 100px;
+  }
+
+  &__swiperBack {
+    // width: 100px;
+    // height: 100px;
+  }
+
+  &__controls {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 5;
+
+    transform: translateY(-80px);
+  }
 }
