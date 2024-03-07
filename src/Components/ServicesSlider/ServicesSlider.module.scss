@@ -34,6 +34,16 @@
     transform: rotate(180deg);
   }
 
+  &__swiperBack--disable {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__swiperNext--disable {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   &__controls {
     display: flex;
   }

@@ -33,8 +33,8 @@ const swiperSettings = {
 };
 
 const ServicesSlider = ({ items }) => {
-  const [disableArrowPrev, setDisableArrowPrev] = useState(true);
-  const [disableArrowNext, setDisableArrowNext] = useState(true);
+  const [disableArrowPrev, setDisableArrowPrev] = useState(false);
+  const [disableArrowNext, setDisableArrowNext] = useState(false);
 
   const [slider, setSlider] = useState();
   const [initialized, setInitialized] = useState(false);
@@ -59,6 +59,12 @@ const ServicesSlider = ({ items }) => {
 
   const onChangeSlide = (e) => {
     console.log(e);
+    if (e.isBeginning) {
+      setDisableArrowPrev(true);
+    }
+    if (e.isEnd) {
+      setDisableArrowNext(true);
+    }
   };
 
   return (
@@ -69,13 +75,21 @@ const ServicesSlider = ({ items }) => {
           <Subtitle>Мы подберем для вас лучшие салоны</Subtitle>
           <div className={styles["swiper-services__controls"]}>
             <div
-              className={styles["swiper-services__swiperBack"]}
+              className={
+                disableArrowPrev
+                  ? `${styles["swiper-services__swiperBack"]} ${styles["swiper-services__swiperBack--disable"]}`
+                  : `${styles["swiper-services__swiperBack"]}`
+              }
               onClick={prevSlide}
             >
               <img src="/icons/arrow.svg" alt="" />
             </div>
             <div
-              className={styles["swiper-services__swiperNext"]}
+              className={
+                disableArrowNext
+                  ? `${styles["swiper-services__swiperNext"]} ${styles["swiper-services__swiperNext--disable"]}`
+                  : `${styles["swiper-services__swiperNext"]}`
+              }
               onClick={nextSlide}
             >
               <img src="/icons/arrow.svg" alt="" />
