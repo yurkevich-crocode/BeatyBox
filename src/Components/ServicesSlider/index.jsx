@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import ServicesItem from "../ServicesItem";
 import { useState, useEffect, useRef } from "react";
+import Title from "@/Components/Title";
+import Subtitle from "@/Components/Subtitle";
 
 const swiperSettings = {
   breakpoints: {
@@ -31,6 +33,9 @@ const swiperSettings = {
 };
 
 const ServicesSlider = ({ items }) => {
+  const [disableArrowPrev, setDisableArrowPrev] = useState(true);
+  const [disableArrowNext, setDisableArrowNext] = useState(true);
+
   const [slider, setSlider] = useState();
   const [initialized, setInitialized] = useState(false);
 
@@ -52,57 +57,73 @@ const ServicesSlider = ({ items }) => {
     slider.slidePrev();
   };
 
-  return (
-    <Swiper
-      modules={[Navigation]}
-      spaceBetween={50}
-      navigation
-      slidesPerView={3}
-      className={styles["swiper-services"]}
-      {...swiperSettings}
-      onSwiper={handleInit}
-    >
-      {initialized ? (
-        items.map((el) => (
-          <SwiperSlide key={el.id}>
-            <ServicesItem
-              name={el.nameService}
-              image={el.image}
-              loading={false}
-            />
-          </SwiperSlide>
-        ))
-      ) : (
-        <>
-          <SwiperSlide key={1}>
-            <ServicesItem loading={true} />
-          </SwiperSlide>
-          <SwiperSlide key={2}>
-            <ServicesItem loading={true} />
-          </SwiperSlide>
-          <SwiperSlide key={3}>
-            <ServicesItem loading={true} />
-          </SwiperSlide>
-          <SwiperSlide key={4}>
-            <ServicesItem loading={true} />
-          </SwiperSlide>
-          <SwiperSlide key={5}>
-            <ServicesItem loading={true} />
-          </SwiperSlide>
-        </>
-      )}
+  const onChangeSlide = (e) => {
+    console.log(e);
+  };
 
-      <div className={styles["swiper-services__controls"]}>
-        <div
-          className={styles["swiper-services__swiperBack"]}
-          onClick={prevSlide}
-        />
-        <div
-          className={styles["swiper-services__swiperNext"]}
-          onClick={nextSlide}
-        />
+  return (
+    <>
+      <div className={styles["swiper-services__title-wrapper"]}>
+        <Title>Найдите услугу из предложенных категорий</Title>
+        <div className={styles["swiper-services__subtitle-wrapper"]}>
+          <Subtitle>Мы подберем для вас лучшие салоны</Subtitle>
+          <div className={styles["swiper-services__controls"]}>
+            <div
+              className={styles["swiper-services__swiperBack"]}
+              onClick={prevSlide}
+            >
+              <img src="/icons/arrow.svg" alt="" />
+            </div>
+            <div
+              className={styles["swiper-services__swiperNext"]}
+              onClick={nextSlide}
+            >
+              <img src="/icons/arrow.svg" alt="" />
+            </div>
+          </div>
+        </div>
       </div>
-    </Swiper>
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={50}
+        navigation
+        onSlideChange={onChangeSlide}
+        slidesPerView={3}
+        className={styles["swiper-services"]}
+        {...swiperSettings}
+        onSwiper={handleInit}
+      >
+        {initialized ? (
+          items.map((el) => (
+            <SwiperSlide key={el.id}>
+              <ServicesItem
+                name={el.nameService}
+                image={el.image}
+                loading={false}
+              />
+            </SwiperSlide>
+          ))
+        ) : (
+          <>
+            <SwiperSlide key={1}>
+              <ServicesItem loading={true} />
+            </SwiperSlide>
+            <SwiperSlide key={2}>
+              <ServicesItem loading={true} />
+            </SwiperSlide>
+            <SwiperSlide key={3}>
+              <ServicesItem loading={true} />
+            </SwiperSlide>
+            <SwiperSlide key={4}>
+              <ServicesItem loading={true} />
+            </SwiperSlide>
+            <SwiperSlide key={5}>
+              <ServicesItem loading={true} />
+            </SwiperSlide>
+          </>
+        )}
+      </Swiper>
+    </>
   );
 };
 
