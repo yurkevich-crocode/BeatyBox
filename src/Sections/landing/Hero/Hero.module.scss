@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   &__img-wrapper {
     width: 100%;
     position: relative;
@@ -53,8 +54,26 @@
     color: var(--white);
   }
 
+  &__search {
+    position: relative;
+    width: max-content;
+  }
+
+  &__search-btn {
+    position: absolute;
+    right: 15px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
   &__search-input {
-    padding: 10px 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 45px;
+    padding-left: 20px;
     width: 450px;
     background-color: white;
     border-radius: 5px;

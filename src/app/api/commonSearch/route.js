@@ -20,7 +20,6 @@ export async function POST(request) {
 
       return Response.json({ data: result });
     } catch (error) {
-      console.log(error);
       return Response.json({ error: "Error fetching data" });
     }
   } else {

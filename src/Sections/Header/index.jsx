@@ -49,6 +49,11 @@ const Header = ({ land }) => {
                   className={styles["header__input"]}
                   placeholder="В каком городе"
                 />
+                <input
+                  type="text"
+                  className={styles["header__input"]}
+                  placeholder="Язык"
+                />
                 <button className={styles["header__input"]}>Искать</button>
               </div>
               <div className="header__auth">
@@ -72,6 +77,11 @@ const Header = ({ land }) => {
                   type="text"
                   className={styles["header__input"]}
                   placeholder="В каком городе"
+                />
+                <input
+                  type="text"
+                  className={styles["header__input"]}
+                  placeholder="Язык"
                 />
                 <button className={styles["header__input"]}>Искать</button>
               </div>

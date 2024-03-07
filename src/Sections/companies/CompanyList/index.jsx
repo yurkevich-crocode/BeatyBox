@@ -39,9 +39,6 @@ const CompanyList = () => {
     });
   }, []);
 
-  console.log(items);
-
-  console.log("sad", items.length);
   return (
     <section className={styles["company-list"]}>
       <Container>

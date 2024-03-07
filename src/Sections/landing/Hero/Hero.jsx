@@ -36,7 +36,9 @@ const Hero = () => {
                 onInput={(e) => setSearchValue(e.target.value)}
               />
               <Link href={`/${searchValue}`}>
-                <button>search</button>
+                <button className={styles["hero__search-btn"]}>
+                  <img src="/icons/loupe.svg" alt="" />
+                </button>
               </Link>
             </div>
           </div>
