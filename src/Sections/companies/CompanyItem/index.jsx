@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation";
 import styles from "./CompanyItem.module.scss";
 
 const CompanyItem = ({ data, skeleton, url }) => {
-  const pathname = usePathname();
   return skeleton ? (
     <div
       className={`${styles["company-item"]} ${styles["company-item__skeleton"]}`}
