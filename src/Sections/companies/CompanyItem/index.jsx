@@ -33,7 +33,7 @@ const CompanyItem = ({ data, skeleton, url }) => {
     </div>
   ) : (
     <div className={styles["company-item"]}>
-      <a href={`/${url[2]}/${data?.companyName}`}>
+      <a href={`/${url[2]}/${data?.companyName}?id=${data.id}`}>
         <div className={styles["company-item__img-wrapper"]}>
           <img src={data?.profileImg} alt="" />
         </div>
@@ -42,7 +42,7 @@ const CompanyItem = ({ data, skeleton, url }) => {
       <div className={styles["company-item__info-wrapper"]}>
         <div className={styles["company-item__main-info"]}>
           <a
-            href={`/${url[2]}/${data?.companyName}`}
+            href={`/${url[2]}/${data?.companyName}?id=${data.id}`}
             className={styles["company-item__name"]}
           >
             {data?.companyName}
