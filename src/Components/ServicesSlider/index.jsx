@@ -58,7 +58,6 @@ const ServicesSlider = ({ items }) => {
   };
 
   const onChangeSlide = (e) => {
-    console.log(e);
     if (e.isBeginning) {
       setDisableArrowPrev(true);
     }

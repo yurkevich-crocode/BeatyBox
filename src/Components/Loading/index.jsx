@@ -5,7 +5,7 @@ const Loading = () => {
     <div className={styles["loading"]}>
       <div className={styles["loading__wrapper"]}>
         <div className={styles["loading__img-wrapper"]}>
-          <img src="./loading.gif" alt="" />
+          <img src="/loading.gif" alt="" />
         </div>
         <p className={styles["loading__text"]}>Загрузка...</p>
       </div>

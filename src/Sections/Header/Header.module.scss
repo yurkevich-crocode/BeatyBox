@@ -4,7 +4,6 @@
   padding: 20px 0;
   transition: 0.3s linear;
   height: fit-content;
-  // background-color: var(--gray-bg);
 
   &__wrapper {
     display: flex;
@@ -25,6 +24,7 @@
     outline: none;
     border: none;
     color: black;
+    cursor: pointer;
   }
 
   &__active {

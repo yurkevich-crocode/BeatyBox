@@ -5,8 +5,11 @@ import styles from "./Header.module.scss";
 import Logo from "@/Components/Logo";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Header = ({ land }) => {
+  const [searchValue, setSearchValue] = useState("");
+
   const [headerScrolledPast, setHeaderScrolledPast] = useState(false);
 
   const handleScroll = () => {
@@ -43,6 +46,7 @@ const Header = ({ land }) => {
                   type="text"
                   className={styles["header__input"]}
                   placeholder="Название услуги"
+                  onInput={(e) => setSearchValue(e.target.value)}
                 />
                 <input
                   type="text"
@@ -54,10 +58,12 @@ const Header = ({ land }) => {
                   className={styles["header__input"]}
                   placeholder="Язык"
                 />
-                <button className={styles["header__input"]}>Искать</button>
+                <Link href={`/${searchValue}`}>
+                  <button className={styles["header__input"]}>Искать</button>
+                </Link>
               </div>
               <div className="header__auth">
-                <img src="./icons/icon_profile.svg" alt="" />
+                <img src="/icons/icon_profile.svg" alt="" />
               </div>
             </div>
           </Container>
@@ -72,6 +78,7 @@ const Header = ({ land }) => {
                   type="text"
                   className={styles["header__input"]}
                   placeholder="Название услуги"
+                  onInput={(e) => setSearchValue(e.target.value)}
                 />
                 <input
                   type="text"
@@ -83,10 +90,12 @@ const Header = ({ land }) => {
                   className={styles["header__input"]}
                   placeholder="Язык"
                 />
-                <button className={styles["header__input"]}>Искать</button>
+                <Link href={`/${searchValue}`}>
+                  <button className={styles["header__input"]}>Искать</button>
+                </Link>
               </div>
               <div className="header__auth">
-                <img src="./icons/icon_profile.svg" alt="" />
+                <img src="/icons/icon_profile.svg" alt="" />
               </div>
             </div>
           </Container>

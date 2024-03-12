@@ -15,13 +15,13 @@ const Footer = () => {
           <div className={styles["footer__row"]}>
             <div className={styles["footer__soc-items"]}>
               <a href="#">
-                <img src="./icons/VK.svg" alt="" />
+                <img src="/icons/VK.svg" alt="" />
               </a>
               <a href="#">
-                <img src="./icons/Telegram.svg" alt="tg" />
+                <img src="/icons/Telegram.svg" alt="tg" />
               </a>
               <a href="#">
-                <img src="./icons/Instagram.svg" alt="inst" />
+                <img src="/icons/Instagram.svg" alt="inst" />
               </a>
             </div>
           </div>

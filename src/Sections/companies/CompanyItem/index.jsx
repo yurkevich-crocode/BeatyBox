@@ -1,6 +1,9 @@
+import { usePathname } from "next/navigation";
+
 import styles from "./CompanyItem.module.scss";
 
-const CompanyItem = ({ data, skeleton }) => {
+const CompanyItem = ({ data, skeleton, url }) => {
+  const pathname = usePathname();
   return skeleton ? (
     <div
       className={`${styles["company-item"]} ${styles["company-item__skeleton"]}`}
@@ -31,12 +34,20 @@ const CompanyItem = ({ data, skeleton }) => {
     </div>
   ) : (
     <div className={styles["company-item"]}>
-      <div className={styles["company-item__img-wrapper"]}>
-        <img src={data?.profileImg} alt="" />
-      </div>
+      <a href={`/${url[2]}/${data?.companyName}`}>
+        <div className={styles["company-item__img-wrapper"]}>
+          <img src={data?.profileImg} alt="" />
+        </div>
+      </a>
+
       <div className={styles["company-item__info-wrapper"]}>
         <div className={styles["company-item__main-info"]}>
-          <p className={styles["company-item__name"]}>{data?.companyName}</p>
+          <a
+            href={`/${url[2]}/${data?.companyName}`}
+            className={styles["company-item__name"]}
+          >
+            {data?.companyName}
+          </a>
           <p className={styles["company-item__address"]}>
             {data?.city}, {data?.street}
           </p>

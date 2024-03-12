@@ -14,7 +14,7 @@ const Hero = () => {
   return (
     <section className={styles["hero"]}>
       <div className={styles["hero__img-wrapper"]}>
-        <img src="./images/hero.jpg" alt="" />
+        <img src="/images/hero.jpg" alt="" />
       </div>
       <div className={styles["hero__wrapper"]}>
         <Container>

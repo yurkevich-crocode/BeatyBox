@@ -23,11 +23,14 @@ export const commonSearch = async (serviceName) => {
 const CompanyList = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     const url = window.location.href.split("/").filter((part) => part !== "");
 
     const lastPart = url[url.length - 1];
+
+    setCategory(url);
 
     commonSearch(lastPart).then((param) => {
       if (param && param.data) {
@@ -45,7 +48,9 @@ const CompanyList = () => {
         <div className={styles["company-list__wrapper"]}>
           <div className={styles["company-list__items"]}>
             {items && !loading && items.length > 0 ? (
-              items.map((el) => <CompanyItem key={el.id} data={el} />)
+              items.map((el) => (
+                <CompanyItem key={el.id} data={el} url={category} />
+              ))
             ) : items && !loading ? (
               <p>По вашему запросу ничего не найдено :(</p>
             ) : (
