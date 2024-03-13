@@ -6,7 +6,7 @@ export async function POST(request) {
 
     try {
       const response = await fetch(
-        `http://servicesserver.onrender.com/api/company/${requestData.id}`,
+        `http://servicesserver.onrender.com/api/common/search?companyName=${requestData.companyName}`,
         {
           method: "GET",
           cache: "no-store",

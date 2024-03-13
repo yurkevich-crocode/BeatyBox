@@ -1,0 +1,68 @@
+.company-data {
+  &__img-wrapper {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__verification {
+    width: max-content;
+    padding: 2px 10px;
+    font-size: 12px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+  }
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-width: 0;
+  }
+
+  &__service {
+    h2 {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.192);
+    }
+  }
+
+  h2 {
+    padding-bottom: 20px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.192);
+  }
+
+  &__example-works {
+    width: 100%;
+    min-width: 0;
+  }
+}

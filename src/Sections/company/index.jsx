@@ -3,14 +3,16 @@
 import Container from "@/Components/Container";
 import styles from "./Company.module.scss";
 import { useEffect, useState } from "react";
+import Shedule from "@/Components/Shedule";
+import CompanyData from "@/Components/CompanyData";
 
-export const getCompanyData = async (id) => {
-  const result = await fetch(`/api/getCompany/`, {
+export const getCompanyData = async (companyName) => {
+  const result = await fetch(`/api/getCompany`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id }),
+    body: JSON.stringify({ companyName }),
   });
 
   const response = await result.json();
@@ -21,12 +23,11 @@ export const getCompanyData = async (id) => {
 
 const Company = () => {
   const [company, setCompanyData] = useState(null);
-  const url = window.location.href.split("/").filter((part) => part !== "");
 
   useEffect(() => {
-    const id = url[3].split("")[url[3].split("").length - 1];
+    const url = window?.location.href.split("/").filter((part) => part !== "");
 
-    getCompanyData(id).then(({ data }) => {
+    getCompanyData(url[3]).then(({ data }) => {
       if (data) {
         setCompanyData(data);
       }
@@ -37,34 +38,8 @@ const Company = () => {
     <section className={styles["company"]}>
       <Container>
         <div className={styles["company__wrapper"]}>
-          <div className={styles["company__info-wrapper"]}>
-            <div className={styles["company__img-wrapper"]}>
-              <img src={company.profileImg} alt="" />
-            </div>
-            <div className={styles["company__about"]}>
-              <h1>{company.companyName}</h1>
-              <span
-                className={styles["company__address"]}
-              >{`${company.city}, ${company.street}`}</span>
-
-              <p className={styles["company__verification"]}>
-                {company.verificationStatus !== "notverif"
-                  ? "Верифицированный салон"
-                  : "Неверифицированный салон"}
-              </p>
-            </div>
-            <div className={styles["company__services"]}>
-              <h2>Список услуг</h2>
-              <div className={styles["company__services-list"]}>
-                {company?.tags.map((tag) => (
-                  <div>
-                    {tag.serviceName} {tag.price} ₽
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={styles["company__schedule"]}></div>
+          <CompanyData company={company[0]} />
+          <Shedule geodata={company[0].geodata} shedule={company[0]} />
         </div>
       </Container>
     </section>
