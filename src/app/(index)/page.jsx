@@ -7,13 +7,13 @@ import Services from "@/Sections/landing/Services/Services";
 export default function Home() {
   return (
     <>
-      <Header land={true} />
+      {/* <Header land={true} /> */}
       <main>
         <Hero />
-        <Services />
-        <Blog />
+        {/* <Services /> */}
+        {/* <Blog /> */}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
