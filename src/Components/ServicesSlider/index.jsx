@@ -13,12 +13,16 @@ import Subtitle from "@/Components/Subtitle";
 
 const swiperSettings = {
   breakpoints: {
-    640: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    480: {
       slidesPerView: 2,
       spaceBetween: 20,
     },
     768: {
-      slidesPerView: 4,
+      slidesPerView: 3,
       spaceBetween: 40,
     },
     1024: {

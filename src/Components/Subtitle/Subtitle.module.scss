@@ -1,7 +1,19 @@
 @import "@/mixins.scss";
 
 .subtitle {
-  font-size: 24px;
+  @include media-breakpoint-down(md) {
+    font-size: 16px;
+  }
+  @include media-breakpoint-between(md, lg) {
+    font-size: 16px;
+  }
+
+  @include media-breakpoint-between(lg, xxl) {
+    font-size: 20px;
+  }
+  @include media-breakpoint-up(xxl) {
+    font-size: 24px;
+  }
 
   &__emphas {
     font-weight: 500;

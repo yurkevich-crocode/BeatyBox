@@ -62,7 +62,7 @@ const Header = ({ land }) => {
                   <button className={styles["header__input"]}>Искать</button>
                 </Link>
               </div>
-              <div className="header__auth">
+              <div className={styles["header__auth"]}>
                 <img src="/icons/icon_profile.svg" alt="" />
               </div>
             </div>
@@ -94,7 +94,7 @@ const Header = ({ land }) => {
                   <button className={styles["header__input"]}>Искать</button>
                 </Link>
               </div>
-              <div className="header__auth">
+              <div className={styles["header__auth"]}>
                 <img src="/icons/icon_profile.svg" alt="" />
               </div>
             </div>

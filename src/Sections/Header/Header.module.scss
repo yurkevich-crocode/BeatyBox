@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .header {
   color: white;
   width: 100%;
@@ -9,12 +11,50 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 120px;
+
+    @include media-breakpoint-up(xxl) {
+      gap: 120px;
+    }
+
+    @include media-breakpoint-between(md, xl) {
+      gap: 40px;
+    }
+
+    @include media-breakpoint-down(md) {
+      gap: 10px;
+    }
+  }
+
+  &__auth {
+    display: flex;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
   }
 
   &__inputs {
     display: flex;
-    gap: 20px;
+
+    @include media-breakpoint-down(lg) {
+      gap: 10px;
+      width: 100%;
+      input:not(:first-of-type) {
+        display: none;
+      }
+
+      input:first-of-type {
+        width: 100%;
+      }
+    }
+
+    @include media-breakpoint-between(lg, xl) {
+      gap: 10px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      gap: 20px;
+    }
   }
 
   &__input {
@@ -50,6 +90,14 @@
   &:not(&__active) {
     .header__inputs {
       display: none;
+    }
+  }
+
+  &__active {
+    .header__wrapper a:first-child {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
     }
   }
 }

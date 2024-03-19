@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .blog {
   &__wrapper {
     display: flex;
@@ -11,6 +13,10 @@
 
     > div:nth-child(even) {
       flex-direction: row-reverse;
+
+      @include media-breakpoint-down(lg) {
+        flex-direction: column;
+      }
     }
   }
 }

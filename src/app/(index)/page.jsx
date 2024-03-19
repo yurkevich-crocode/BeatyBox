@@ -3,17 +3,20 @@ import Footer from "@/Sections/Footer";
 import Header from "@/Sections/Header";
 import Hero from "@/Sections/landing/Hero/Hero";
 import Services from "@/Sections/landing/Services/Services";
+import MobileBar from "@/Sections/MobileBar";
 
 export default function Home() {
   return (
     <>
-      {/* <Header land={true} /> */}
+      <Header land={true} />
       <main>
         <Hero />
-        {/* <Services /> */}
-        {/* <Blog /> */}
+        <Services />
+        <Blog />
       </main>
-      {/* <Footer /> */}
+      <MobileBar />
+
+      <Footer />
     </>
   );
 }

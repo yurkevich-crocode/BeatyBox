@@ -11,7 +11,10 @@
 }
 
 .container {
-  @include media-breakpoint-down(xl) {
+  @include media-breakpoint-down(sm) {
+    --spacing-container: 10px;
+  }
+  @include media-breakpoint-between(sm, xl) {
     --spacing-container: 30px;
   }
 

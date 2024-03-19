@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .hero {
   position: relative;
   display: flex;
@@ -57,6 +59,10 @@
   &__search {
     position: relative;
     width: max-content;
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
   }
 
   &__search-btn {
@@ -67,18 +73,32 @@
     border: none;
     outline: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    top: 0;
   }
 
   &__search-input {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 45px;
-    padding-left: 20px;
-    width: 450px;
     background-color: white;
     border-radius: 5px;
     outline: none;
     border: none;
     color: black;
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 45px;
+      padding-left: 10px;
+    }
+
+    @include media-breakpoint-up(md) {
+      width: 450px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 45px;
+      padding-left: 20px;
+    }
   }
 }

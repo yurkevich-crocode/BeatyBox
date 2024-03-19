@@ -1,18 +1,36 @@
+@import "@/mixins.scss";
+
 .footer {
   margin-top: auto;
-  padding: 40px 0;
   background-color: var(--gray-bg);
   color: var(--white);
 
   &__wrapper {
     display: flex;
     justify-content: space-between;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 40px 0 87px 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: 40px;
   }
 
   &__row {
     display: flex;
     align-items: center;
     gap: 15px;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+    }
   }
 
   &__soc-items {

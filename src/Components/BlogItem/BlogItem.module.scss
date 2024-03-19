@@ -1,15 +1,36 @@
+@import "@/mixins.scss";
+
 .blog-item {
   display: flex;
   gap: 40px;
+
+  @include media-breakpoint-down(lg) {
+    flex-direction: column;
+  }
   &__img-wrapper,
   &__text-wrapper {
     width: calc(50% - 20px);
   }
 
   &__img-wrapper {
-    height: 450px;
     position: relative;
     overflow: hidden;
+
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+
+    @include media-breakpoint-down(lg) {
+      height: 280px;
+    }
+
+    @include media-breakpoint-between(lg, xxl) {
+      height: 320px;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      height: 450px;
+    }
   }
 
   &__img-wrapper img {
@@ -23,13 +44,36 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
   }
 
   &__title {
-    font-size: 42px;
+    font-weight: 600;
+    @include media-breakpoint-down(lg) {
+      font-size: 20px;
+    }
+
+    @include media-breakpoint-between(lg, xxl) {
+      font-size: 32px;
+    }
+    @include media-breakpoint-up(xxl) {
+      font-size: 42px;
+    }
   }
 
   &__text {
-    font-size: 20px;
+    @include media-breakpoint-down(lg) {
+      font-size: 16px;
+    }
+
+    @include media-breakpoint-between(lg, xxl) {
+      font-size: 18px;
+    }
+    @include media-breakpoint-up(xxl) {
+      font-size: 20px;
+    }
   }
 }

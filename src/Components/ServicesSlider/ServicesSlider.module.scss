@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .swiper-services {
   overflow: unset;
   display: flex;
@@ -14,6 +16,10 @@
   &__subtitle-wrapper {
     display: flex;
     justify-content: space-between;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+    }
   }
 
   &__swiperNext,
