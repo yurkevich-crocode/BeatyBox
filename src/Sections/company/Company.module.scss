@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .company {
   padding-top: 120px;
   position: relative;
@@ -5,7 +7,18 @@
   &__wrapper {
     position: relative;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 50px;
+
+    @include media-breakpoint-down(lg) {
+      gap: 20px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      gap: 50px;
+    }
   }
 }

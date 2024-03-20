@@ -6,20 +6,18 @@ export async function POST(request) {
 
     try {
       const response = await fetch(
-        `http://servicesserver.onrender.com/api/common/search?companyName=${requestData.companyName}`,
+        `http://servicesserver.onrender.com/api/company/${requestData.id}`,
         {
           method: "GET",
           cache: "no-store",
         }
       );
 
-      if (!response.ok) {
-        return Response.json({ data: [] });
-      }
       const result = await response.json();
 
       return Response.json({ data: result });
     } catch (error) {
+      console.log(Response);
       return Response.json({ error: "Error fetching data" });
     }
   } else {

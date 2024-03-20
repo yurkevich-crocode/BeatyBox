@@ -1,0 +1,23 @@
+@import "@/mixins.scss";
+
+.mobile-toggle {
+  border-bottom: 2px solid black;
+
+  &__items {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__item {
+    font-size: 18px;
+  }
+
+  &__item--active {
+    font-weight: 900;
+    border-bottom: 3px solid black;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

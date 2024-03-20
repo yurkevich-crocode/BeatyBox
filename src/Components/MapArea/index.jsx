@@ -2,18 +2,16 @@ import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 import styles from "./MarArea.module.scss";
 
 const MapArea = ({ geoPos }) => {
-  const coords = geoPos?.toString().split(",");
-
   return (
     <YMaps>
       <Map
         defaultState={{
-          center: [+coords[0], +coords[1]],
+          center: [geoPos[1], geoPos[0]],
           zoom: 14,
         }}
         className={styles["map-area"]}
       >
-        <Placemark geometry={[+coords[0], +coords[1]]} />
+        <Placemark geometry={[geoPos[1], geoPos[0]]} />
       </Map>
     </YMaps>
   );

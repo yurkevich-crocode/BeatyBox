@@ -1,11 +1,35 @@
+@import "@/mixins.scss";
+
 .shedule {
-  position: sticky;
   padding-bottom: 10px;
   border-radius: 15px;
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
-  top: 120px;
-  right: 0;
-  height: max-content;
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    top: 120px;
+    right: 0;
+    height: max-content;
+  }
+
+  &--active {
+    display: block;
+  }
+
+  &__icon {
+    width: 25px;
+    height: 25px;
+
+    img {
+      width: 25px;
+      height: 25px;
+      object-fit: cover;
+    }
+  }
 
   &__row {
     padding: 10px;
@@ -21,11 +45,22 @@
   }
 
   &__text {
-    font-size: 14px;
+    font-size: 12px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
   }
 
   &__worktime-items {
     display: flex;
     flex-direction: column;
+  }
+
+  &__cellPhone {
+    display: flex;
+    gap: 15px;
+    align-items: center;
   }
 }

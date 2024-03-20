@@ -1,7 +1,7 @@
 import Footer from "@/Sections/Footer";
 import Header from "@/Sections/Header";
+import MobileBar from "@/Sections/MobileBar";
 import CompanyList from "@/Sections/companies/CompanyList";
-
 export default function Companies({ params }) {
   return (
     <>
@@ -10,6 +10,7 @@ export default function Companies({ params }) {
         <CompanyList />
       </main>
       <Footer />
+      <MobileBar />
     </>
   );
 }

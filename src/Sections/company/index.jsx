@@ -5,14 +5,15 @@ import styles from "./Company.module.scss";
 import { useEffect, useState } from "react";
 import Shedule from "@/Components/Shedule";
 import CompanyData from "@/Components/CompanyData";
+import Loading from "@/Components/Loading";
 
-export const getCompanyData = async (companyName) => {
+export const getCompanyData = async (id) => {
   const result = await fetch(`/api/getCompany`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ companyName }),
+    body: JSON.stringify({ id }),
   });
 
   const response = await result.json();
@@ -23,6 +24,8 @@ export const getCompanyData = async (companyName) => {
 
 const Company = () => {
   const [company, setCompanyData] = useState(null);
+  const [isLoad, setLoad] = useState(true);
+  const [toggleVariant, setToggleVariant] = useState("Услуги");
 
   useEffect(() => {
     const url = window?.location.href.split("/").filter((part) => part !== "");
@@ -30,20 +33,37 @@ const Company = () => {
     getCompanyData(url[3]).then(({ data }) => {
       if (data) {
         setCompanyData(data);
+        setLoad(false);
       }
     });
   }, []);
 
-  return company ? (
+  const handleSetActive = (value) => {
+    setToggleVariant(value);
+  };
+
+  console.log(toggleVariant);
+
+  return !isLoad && company ? (
     <section className={styles["company"]}>
       <Container>
         <div className={styles["company__wrapper"]}>
-          <CompanyData company={company[0]} />
-          <Shedule geodata={company[0].geodata} shedule={company[0]} />
+          <CompanyData
+            company={company}
+            toggle={toggleVariant}
+            handleSetActive={handleSetActive}
+          />
+          <Shedule
+            shedule={company}
+            geodata={company.geodata}
+            toggle={toggleVariant}
+          />
         </div>
       </Container>
     </section>
-  ) : null;
+  ) : (
+    <Loading />
+  );
 };
 
 export default Company;
