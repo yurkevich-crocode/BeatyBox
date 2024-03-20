@@ -40,7 +40,7 @@
   }
 
   &__title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 900;
   }
 
@@ -56,6 +56,9 @@
   &__worktime-items {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+
+    font-size: 14px;
   }
 
   &__cellPhone {

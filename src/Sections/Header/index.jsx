@@ -72,7 +72,7 @@ const Header = ({ land }) => {
         <header className={styles["header__active"]}>
           <Container>
             <div className={styles["header__wrapper"]}>
-              <Logo />
+              <Logo className={styles["header__logo"]} />
               <div className={styles["header__inputs"]}>
                 <input
                   type="text"
@@ -90,7 +90,7 @@ const Header = ({ land }) => {
                   className={styles["header__input"]}
                   placeholder="Язык"
                 />
-                <Link href={`/${searchValue}`}>
+                <Link href={`/example/${searchValue}`}>
                   <button className={styles["header__input"]}>Искать</button>
                 </Link>
               </div>
