@@ -62,9 +62,9 @@ const Header = ({ land }) => {
                   <button className={styles["header__input"]}>Искать</button>
                 </Link>
               </div>
-              <div className={styles["header__auth"]}>
+              <Link href={`/lk/login`} className={styles["header__auth"]}>
                 <img src="/icons/icon_profile.svg" alt="" />
-              </div>
+              </Link>
             </div>
           </Container>
         </header>
@@ -94,9 +94,9 @@ const Header = ({ land }) => {
                   <button className={styles["header__input"]}>Искать</button>
                 </Link>
               </div>
-              <div className={styles["header__auth"]}>
+              <Link href={`/lk/login`} className={styles["header__auth"]}>
                 <img src="/icons/icon_profile.svg" alt="" />
-              </div>
+              </Link>
             </div>
           </Container>
         </header>

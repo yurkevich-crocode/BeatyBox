@@ -7,7 +7,7 @@ const MobileBar = () => {
     <div className={styles["mobile-bar"]}>
       <Container>
         <div className={styles["mobile-bar__wrapper"]}>
-          <Link href="#" className={styles["mobile-bar__item"]}>
+          <Link href={`/lk/login`} className={styles["mobile-bar__item"]}>
             <img src="/icons/icon_profile.svg" alt="" />
             <span className={styles["mobile-bar__name"]}>Профиль</span>
           </Link>

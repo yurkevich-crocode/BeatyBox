@@ -1,0 +1,75 @@
+@import "@/mixins.scss";
+
+.auth {
+  padding-top: 120px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 20px;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+
+    @include media-breakpoint-between(md, lg) {
+      width: 70%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+    }
+  }
+
+  &__input {
+    border-radius: 10px;
+    background-color: white;
+    outline: none;
+    border: 1px solid black;
+    color: black;
+    font-size: 14px;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+      -webkit-text-fill-color: black !important;
+    }
+
+    @include media-breakpoint-down(lg) {
+      padding: 5px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: 10px;
+    }
+  }
+
+  &__btn {
+    background-color: #ff6a96;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  &__reg {
+    color: #ff6a96;
+    text-decoration: underline;
+  }
+
+  &__text-wrapper {
+    text-align: center;
+  }
+}
