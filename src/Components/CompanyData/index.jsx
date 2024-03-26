@@ -1,21 +1,34 @@
+import { useEffect, useState } from "react";
 import MobileToggle from "../MobileToggle";
 import styles from "./CompanyData.module.scss";
 import ExampleWorks from "@/Components/ExampleWorksSlider";
 
 const CompanyData = ({ company, toggle, handleSetActive }) => {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    if (company) {
+      company.companymetadatums.filter((el) => {
+        el.type === "images" ? setImages([...el.value]) : null;
+      });
+    }
+  }, [company]);
+
+  console.log(company.services);
+
   return company ? (
     <div className={styles["company-data__info-wrapper"]}>
       <div className={styles["company-data__img-wrapper"]}>
-        <img src={company.exampleWorks[0]} alt="" />
+        <img src={images[0]} alt="" />
       </div>
       <MobileToggle toggle={toggle} handleSetActive={handleSetActive} />
       {toggle === "Услуги" ? (
         <>
           <div className={styles["company-data__about"]}>
-            <h1>{company.companyName}</h1>
+            <h1>{company.name}</h1>
             <span
               className={styles["company-data__address"]}
-            >{`${company.street}`}</span>
+            >{`${company.address}`}</span>
             <span className={styles["company-data__address"]}>
               {/* Языки: {`${[...company?.languages]}`} */}
             </span>
@@ -29,11 +42,11 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
           <div className={styles["company-data__service"]}>
             <h2>Список услуг</h2>
             <div className={styles["company-data__services-list"]}>
-              {company.tags?.map((tag, idx) => (
+              {company.services.map((cat, idx) => (
                 <div className={styles["company-data__tag"]} key={idx}>
-                  <p className={styles["company-data__tag-name"]}>{tag.name}</p>
+                  <p className={styles["company-data__tag-name"]}>{cat.name}</p>
                   <span className={styles["company-data__tag-price"]}>
-                    {tag.price?.value} {tag.price?.currency}
+                    {cat.price} {cat.currency}
                   </span>
                 </div>
               ))}
@@ -41,7 +54,7 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
           </div>
           <div className={styles["company-data__example-works"]}>
             <h2>Примеры работ</h2>
-            <ExampleWorks items={company?.exampleWorks} />
+            <ExampleWorks items={images} />
           </div>
         </>
       ) : null}

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Shedule from "@/Components/Shedule";
 import CompanyData from "@/Components/CompanyData";
 import Loading from "@/Components/Loading";
+import { commonSearch } from "../companies/CompanyList";
 
 export const getCompanyData = async (id) => {
   const result = await fetch(`/api/getCompany`, {
@@ -42,8 +43,7 @@ const Company = () => {
     setToggleVariant(value);
   };
 
-  console.log(toggleVariant);
-
+  console.log(company);
   return !isLoad && company ? (
     <section className={styles["company"]}>
       <Container>

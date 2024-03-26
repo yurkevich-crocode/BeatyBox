@@ -6,7 +6,7 @@ export async function POST(request) {
 
     try {
       const response = await fetch(
-        `http://servicesserver.onrender.com/api/company/${requestData.id}`,
+        `https://yoohive-api.onrender.com/api/company/${requestData.id}`,
         {
           method: "GET",
           cache: "no-store",

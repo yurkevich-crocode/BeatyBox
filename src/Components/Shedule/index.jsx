@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { default as MapArea } from "../MapArea";
 import styles from "./Shedule.module.scss";
 
@@ -33,6 +34,17 @@ const week = [
 ];
 
 const Shedule = ({ shedule, geodata, toggle }) => {
+  const [phoneArr, setPhoneArr] = useState([]);
+  const [sheduleArr, setSheduleArr] = useState([]);
+
+  useEffect(() => {
+    shedule.companymetadatums.filter((el) => {
+      el.type === "phones" ? setPhoneArr([...el.value]) : null;
+      el.type === "schedule" ? setSheduleArr([...el.value]) : null;
+    });
+  }, [shedule]);
+
+  console.log(sheduleArr);
   return shedule ? (
     <div
       className={
@@ -49,20 +61,19 @@ const Shedule = ({ shedule, geodata, toggle }) => {
         </div>
         <div className={styles["shedule__row"]}>
           <p className={styles["shedule__title"]}>Контакты</p>
-          <a
-            href={`tel:${shedule?.phone}`}
-            className={styles["shedule__cellPhone"]}
-          >
-            <span className={styles["shedule__icon"]}>
-              <img src="/icons/phone.svg" />
-            </span>
-            {shedule?.phone}
-          </a>
+          {phoneArr.map((el) => (
+            <a href={`tel:${el}`} className={styles["shedule__cellPhone"]}>
+              <span className={styles["shedule__icon"]}>
+                <img src="/icons/phone.svg" />
+              </span>
+              {el}
+            </a>
+          ))}
         </div>
         <div className={styles["shedule__row"]}>
           <p className={styles["shedule__title"]}>График работы</p>
           <div className={styles["shedule__worktime-items"]}>
-            {shedule?.schedule?.map((item, idx) => (
+            {sheduleArr.map((item, idx) => (
               <span className={styles["shedule__worktime-item"]}>
                 {week[idx].name}
                 {": "}
