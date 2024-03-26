@@ -1,4 +1,5 @@
 import "@/globals.scss";
+import Head from "next/head";
 
 export const metadata = {
   title: "comp",

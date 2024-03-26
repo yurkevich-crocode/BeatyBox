@@ -61,8 +61,12 @@ const Shedule = ({ shedule, geodata, toggle }) => {
         </div>
         <div className={styles["shedule__row"]}>
           <p className={styles["shedule__title"]}>Контакты</p>
-          {phoneArr.map((el) => (
-            <a href={`tel:${el}`} className={styles["shedule__cellPhone"]}>
+          {phoneArr.map((el, idx) => (
+            <a
+              href={`tel:${el}`}
+              className={styles["shedule__cellPhone"]}
+              key={idx}
+            >
               <span className={styles["shedule__icon"]}>
                 <img src="/icons/phone.svg" />
               </span>
@@ -74,7 +78,7 @@ const Shedule = ({ shedule, geodata, toggle }) => {
           <p className={styles["shedule__title"]}>График работы</p>
           <div className={styles["shedule__worktime-items"]}>
             {sheduleArr.map((item, idx) => (
-              <span className={styles["shedule__worktime-item"]}>
+              <span className={styles["shedule__worktime-item"]} key={idx}>
                 {week[idx].name}
                 {": "}
                 {!item.isClosed

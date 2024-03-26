@@ -5,6 +5,7 @@ import ExampleWorks from "@/Components/ExampleWorksSlider";
 
 const CompanyData = ({ company, toggle, handleSetActive }) => {
   const [images, setImages] = useState([]);
+  const [counterItems, setCounter] = useState(10);
 
   useEffect(() => {
     if (company) {
@@ -14,7 +15,13 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
     }
   }, [company]);
 
-  console.log(company.services);
+  const handleCounter = (arr) => {
+    if (counterItems == arr.length) {
+      setCounter(10);
+    } else {
+      setCounter(arr.length);
+    }
+  };
 
   return company ? (
     <div className={styles["company-data__info-wrapper"]}>
@@ -42,7 +49,7 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
           <div className={styles["company-data__service"]}>
             <h2>Список услуг</h2>
             <div className={styles["company-data__services-list"]}>
-              {company.services.map((cat, idx) => (
+              {company.services.slice(0, counterItems).map((cat, idx) => (
                 <div className={styles["company-data__tag"]} key={idx}>
                   <p className={styles["company-data__tag-name"]}>{cat.name}</p>
                   <span className={styles["company-data__tag-price"]}>
@@ -51,6 +58,12 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
                 </div>
               ))}
             </div>
+            <span
+              className={styles["company-data__show-all"]}
+              onClick={() => handleCounter(company.services)}
+            >
+              {counterItems > 10 ? "Скрыть все" : "Показать все"}
+            </span>
           </div>
           <div className={styles["company-data__example-works"]}>
             <h2>Примеры работ</h2>

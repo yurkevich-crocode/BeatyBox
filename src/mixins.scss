@@ -62,3 +62,12 @@ $breakpoints: (
     }
   }
 }
+
+.marker {
+  background-image: url("/marker.svg");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}

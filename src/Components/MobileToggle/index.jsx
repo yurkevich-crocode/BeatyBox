@@ -18,9 +18,10 @@ const MobileToggle = ({ toggle, handleSetActive }) => {
     <div className={styles["mobile-toggle"]}>
       <div className={styles["mobile-toggle__wrapper"]}>
         <div className={styles["mobile-toggle__items"]}>
-          {variantsTog.map((el) =>
+          {variantsTog.map((el, idx) =>
             toggle === el.name ? (
               <span
+                key={idx}
                 className={`${styles["mobile-toggle__item"]} ${styles["mobile-toggle__item--active"]}`}
                 onClick={(e) => handleActiveToggle(e)}
               >
@@ -28,6 +29,7 @@ const MobileToggle = ({ toggle, handleSetActive }) => {
               </span>
             ) : (
               <span
+                key={idx}
                 className={styles["mobile-toggle__item"]}
                 onClick={(e) => handleActiveToggle(e)}
               >

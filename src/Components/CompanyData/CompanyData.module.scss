@@ -40,6 +40,12 @@
     min-width: 0;
   }
 
+  &__show-all {
+    cursor: pointer;
+    color: #ff6a96;
+    font-weight: 600;
+  }
+
   &__service {
     h2 {
       border-bottom: 1px solid rgba(0, 0, 0, 0.192);
