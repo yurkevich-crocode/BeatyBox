@@ -5,7 +5,8 @@ import React from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const MapArea = ({ geoPos }) => {
-  mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  mapboxgl.accessToken =
+    "pk.eyJ1IjoiZGFudmVyeXVyayIsImEiOiJjbGE4MTIzam0wZ2Z3M3ZtcTFlYWc0ZnJ0In0.xOVF1gHOacyuHOe2-LSXZw";
 
   const mapContainer = useRef(null);
   const map = useRef(null);
