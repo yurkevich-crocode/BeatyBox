@@ -4,7 +4,7 @@ export async function POST(request) {
   if (request.method === "POST") {
     try {
       const response = await fetch(
-        "https://servicesserver.onrender.com/api/services/getAllServices",
+        "https://yoohive-api-test-version.onrender.com/api/category/all",
         {
           method: "GET",
           cache: "no-store",

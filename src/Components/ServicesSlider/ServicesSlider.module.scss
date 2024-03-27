@@ -1,6 +1,6 @@
 @import "@/mixins.scss";
 
-.swiper-services {
+.services {
   overflow: unset;
   display: flex;
   align-items: center;
@@ -20,6 +20,11 @@
     @include media-breakpoint-down(md) {
       flex-direction: column;
     }
+  }
+
+  &__items {
+    display: flex;
+    gap: 20px;
   }
 
   &__swiperNext,

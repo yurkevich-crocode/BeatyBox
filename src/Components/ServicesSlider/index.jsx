@@ -1,46 +1,15 @@
 "use client";
 
-import "swiper/css";
-import "swiper/css/navigation";
 import styles from "./ServicesSlider.module.scss";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import ServicesItem from "../ServicesItem";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Title from "@/Components/Title";
 import Subtitle from "@/Components/Subtitle";
 
-const swiperSettings = {
-  breakpoints: {
-    320: {
-      slidesPerView: 1,
-      spaceBetween: 20,
-    },
-    480: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 40,
-    },
-    1024: {
-      slidesPerView: 4,
-      spaceBetween: 50,
-    },
-  },
-  navigation: {
-    nextEl: "swiper-services__swiperNext",
-    prevEl: "swiper-services__swiperBack",
-  },
-};
-
 const ServicesSlider = ({ items }) => {
-  const [disableArrowPrev, setDisableArrowPrev] = useState(false);
-  const [disableArrowNext, setDisableArrowNext] = useState(false);
+  console.log(items);
 
-  const [slider, setSlider] = useState();
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
@@ -49,97 +18,34 @@ const ServicesSlider = ({ items }) => {
     }
   }, [items, initialized]);
 
-  const handleInit = (e) => {
-    setSlider(e);
-  };
-
-  const nextSlide = () => {
-    slider.slideNext();
-  };
-
-  const prevSlide = () => {
-    slider.slidePrev();
-  };
-
-  const onChangeSlide = (e) => {
-    if (e.isBeginning) {
-      setDisableArrowPrev(true);
-    }
-    if (e.isEnd) {
-      setDisableArrowNext(true);
-    }
-  };
-
   return (
     <>
-      <div className={styles["swiper-services__title-wrapper"]}>
+      <div className={styles["services__title-wrapper"]}>
         <Title>Найдите услугу из предложенных категорий</Title>
-        <div className={styles["swiper-services__subtitle-wrapper"]}>
-          <Subtitle>Мы подберем для вас лучшие салоны</Subtitle>
-          <div className={styles["swiper-services__controls"]}>
-            <div
-              className={
-                disableArrowPrev
-                  ? `${styles["swiper-services__swiperBack"]} ${styles["swiper-services__swiperBack--disable"]}`
-                  : `${styles["swiper-services__swiperBack"]}`
-              }
-              onClick={prevSlide}
-            >
-              <img src="/icons/arrow.svg" alt="" />
-            </div>
-            <div
-              className={
-                disableArrowNext
-                  ? `${styles["swiper-services__swiperNext"]} ${styles["swiper-services__swiperNext--disable"]}`
-                  : `${styles["swiper-services__swiperNext"]}`
-              }
-              onClick={nextSlide}
-            >
-              <img src="/icons/arrow.svg" alt="" />
-            </div>
-          </div>
+        <div className={styles["services__subtitle-wrapper"]}>
+          <Subtitle>Мы подберем для вас лучшие салоны</Subtitle>.
         </div>
-      </div>
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={50}
-        navigation
-        onSlideChange={onChangeSlide}
-        slidesPerView={3}
-        className={styles["swiper-services"]}
-        {...swiperSettings}
-        onSwiper={handleInit}
-      >
-        {initialized ? (
-          items.map((el) => (
-            <SwiperSlide key={el.id}>
+        <div className={styles["services__items"]}>
+          {initialized ? (
+            items.map((el) => (
               <ServicesItem
-                name={el.nameService}
+                name={el.name}
                 image={el.image}
                 loading={false}
+                key={el.id}
               />
-            </SwiperSlide>
-          ))
-        ) : (
-          <>
-            <SwiperSlide key={1}>
-              <ServicesItem loading={true} />
-            </SwiperSlide>
-            <SwiperSlide key={2}>
-              <ServicesItem loading={true} />
-            </SwiperSlide>
-            <SwiperSlide key={3}>
-              <ServicesItem loading={true} />
-            </SwiperSlide>
-            <SwiperSlide key={4}>
-              <ServicesItem loading={true} />
-            </SwiperSlide>
-            <SwiperSlide key={5}>
-              <ServicesItem loading={true} />
-            </SwiperSlide>
-          </>
-        )}
-      </Swiper>
+            ))
+          ) : (
+            <>
+              <ServicesItem loading={true} key={1} />
+              <ServicesItem loading={true} key={2} />
+              <ServicesItem loading={true} key={3} />
+              <ServicesItem loading={true} key={4} />
+              <ServicesItem loading={true} key={5} />
+            </>
+          )}
+        </div>
+      </div>
     </>
   );
 };

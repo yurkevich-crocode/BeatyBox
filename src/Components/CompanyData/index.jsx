@@ -6,6 +6,7 @@ import ExampleWorks from "@/Components/ExampleWorksSlider";
 const CompanyData = ({ company, toggle, handleSetActive }) => {
   const [images, setImages] = useState([]);
   const [counterItems, setCounter] = useState(10);
+  const [showDesc, setShowDesc] = useState(false);
 
   useEffect(() => {
     if (company) {
@@ -21,6 +22,10 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
     } else {
       setCounter(arr.length);
     }
+  };
+
+  const handleShow = () => {
+    setShowDesc((prev) => !prev);
   };
 
   return company ? (
@@ -51,10 +56,26 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
             <div className={styles["company-data__services-list"]}>
               {company.services.slice(0, counterItems).map((cat, idx) => (
                 <div className={styles["company-data__tag"]} key={idx}>
-                  <p className={styles["company-data__tag-name"]}>{cat.name}</p>
-                  <span className={styles["company-data__tag-price"]}>
-                    {cat.price} {cat.currency}
+                  <div className={styles["company-data__tag-main"]}>
+                    <p className={styles["company-data__tag-name"]}>
+                      {cat.name}
+                    </p>
+                    <span className={styles["company-data__tag-price"]}>
+                      {cat.price} {cat.currency}
+                    </span>
+                  </div>
+                  <span
+                    className={
+                      showDesc
+                        ? `${styles["company-data__tag-description"]} ${styles["company-data__tag-desctiption--active"]}`
+                        : `${styles["company-data__tag-description"]}`
+                    }
+                  >
+                    {cat.description}
                   </span>
+                  {cat.description !== "" ? (
+                    <span onClick={() => handleShow()}>Показать описание</span>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -67,7 +88,7 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
           </div>
           <div className={styles["company-data__example-works"]}>
             <h2>Примеры работ</h2>
-            <ExampleWorks items={images} />
+            <ExampleWorks items={images.slice(1, images.length)} />
           </div>
         </>
       ) : null}
