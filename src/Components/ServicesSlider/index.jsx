@@ -8,8 +8,6 @@ import Title from "@/Components/Title";
 import Subtitle from "@/Components/Subtitle";
 
 const ServicesSlider = ({ items }) => {
-  console.log(items);
-
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {

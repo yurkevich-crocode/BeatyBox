@@ -43,7 +43,6 @@ const Company = () => {
     setToggleVariant(value);
   };
 
-  console.log(company);
   return !isLoad && company ? (
     <section className={styles["company"]}>
       <Container>

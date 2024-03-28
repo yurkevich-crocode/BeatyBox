@@ -44,7 +44,6 @@ const Shedule = ({ shedule, geodata, toggle }) => {
     });
   }, [shedule]);
 
-  console.log(sheduleArr);
   return shedule ? (
     <div
       className={

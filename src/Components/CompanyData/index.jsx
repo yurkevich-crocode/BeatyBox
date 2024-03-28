@@ -2,31 +2,57 @@ import { useEffect, useState } from "react";
 import MobileToggle from "../MobileToggle";
 import styles from "./CompanyData.module.scss";
 import ExampleWorks from "@/Components/ExampleWorksSlider";
+import CompanyTag from "../CompanyTag";
 
 const CompanyData = ({ company, toggle, handleSetActive }) => {
   const [images, setImages] = useState([]);
   const [counterItems, setCounter] = useState(10);
-  const [showDesc, setShowDesc] = useState(false);
+  const [parentList, setParentList] = useState([]);
+
+  Array.prototype.contains = function (v) {
+    for (var i = 0; i < this.length; i++) {
+      if (this[i] === v) return true;
+    }
+    return false;
+  };
+
+  Array.prototype.unique = function () {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+      if (!arr.contains(this[i])) {
+        arr.push(this[i]);
+      }
+    }
+    return arr;
+  };
 
   useEffect(() => {
+    const parentListArr = [];
     if (company) {
       company.companymetadatums.filter((el) => {
         el.type === "images" ? setImages([...el.value]) : null;
       });
+
+      company.services.map((el) => {
+        if (el.parent !== null) {
+          parentListArr.push(el);
+          setParentList(parentListArr.unique());
+        }
+      });
     }
   }, [company]);
 
+  console.log(parentList);
+
   const handleCounter = (arr) => {
-    if (counterItems == arr.length) {
+    if (counterItems == arr.length && arr.length > 10) {
       setCounter(10);
     } else {
       setCounter(arr.length);
     }
   };
 
-  const handleShow = () => {
-    setShowDesc((prev) => !prev);
-  };
+  console.log(counterItems);
 
   return company ? (
     <div className={styles["company-data__info-wrapper"]}>
@@ -54,36 +80,44 @@ const CompanyData = ({ company, toggle, handleSetActive }) => {
           <div className={styles["company-data__service"]}>
             <h2>Список услуг</h2>
             <div className={styles["company-data__services-list"]}>
-              {company.services.slice(0, counterItems).map((cat, idx) => (
-                <div className={styles["company-data__tag"]} key={idx}>
-                  <div className={styles["company-data__tag-main"]}>
-                    <p className={styles["company-data__tag-name"]}>
-                      {cat.name}
-                    </p>
-                    <span className={styles["company-data__tag-price"]}>
-                      {cat.price} {cat.currency}
-                    </span>
+              {company.services.slice(0, counterItems).map((cat, idx) =>
+                !cat.parent ? (
+                  <div className={styles["company-data__tag"]} key={idx}>
+                    <div className={styles["company-data__tag-main"]}>
+                      <p className={styles["company-data__tag-name"]}>
+                        {cat.name}
+                      </p>
+                      <span className={styles["company-data__tag-price"]}>
+                        {cat.price} {cat.currency}
+                      </span>
+                    </div>
+
+                    <CompanyTag desc={cat.description} />
+                    {parentList.map((el) => {
+                      if (el.parent.name === cat.name) {
+                        return (
+                          <span className={styles["company-data__tag-subtag"]}>
+                            {el.name}{" "}
+                            <span>
+                              {el.price} {el.currency}
+                            </span>
+                          </span>
+                        );
+                      }
+                    })}
                   </div>
-                  <span
-                    className={
-                      showDesc
-                        ? `${styles["company-data__tag-description"]} ${styles["company-data__tag-desctiption--active"]}`
-                        : `${styles["company-data__tag-description"]}`
-                    }
-                  >
-                    {cat.description}
-                  </span>
-                  {cat.description !== "" ? (
-                    <span onClick={() => handleShow()}>Показать описание</span>
-                  ) : null}
-                </div>
-              ))}
+                ) : null
+              )}
             </div>
             <span
               className={styles["company-data__show-all"]}
               onClick={() => handleCounter(company.services)}
             >
-              {counterItems > 10 ? "Скрыть все" : "Показать все"}
+              {company.services.length > 10
+                ? counterItems > 10
+                  ? "Скрыть все"
+                  : "Показать все"
+                : null}
             </span>
           </div>
           <div className={styles["company-data__example-works"]}>

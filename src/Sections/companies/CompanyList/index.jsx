@@ -42,7 +42,6 @@ const CompanyList = () => {
     });
   }, []);
 
-  console.log(items);
   return (
     <section className={styles["company-list"]}>
       <Container>
